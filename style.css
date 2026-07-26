@@ -123,6 +123,9 @@ p { margin: 0 0 1.2em; }
 .hero {
   padding: clamp(48px, 10vw, 96px) var(--gutter) clamp(32px, 6vw, 56px);
   max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+
 }
 
 .hero h1 {
