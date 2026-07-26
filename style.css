@@ -17,7 +17,7 @@
 
   --measure: clamp(760px, 58vw, 1040px);
   --gutter: clamp(20px, 4vw, 48px);
-  --prose-width: clamp(760px, 45vw, 720px);
+  --prose-width: clamp(1080px, 45vw, 1200px);
 }
 
 /* =========================================================
