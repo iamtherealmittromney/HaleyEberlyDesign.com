@@ -404,3 +404,59 @@ p { margin: 0 0 1.2em; }
 }
 
 .case-study__nav a:hover { text-decoration: underline; }
+
+/* =========================================================
+   Lightbox
+   ========================================================= */
+.case-study__figure img { cursor: zoom-in; }
+ 
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 6vw, 64px);
+  background: color-mix(in srgb, var(--ink) 92%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+ 
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+ 
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+ 
+.lightbox__close {
+  position: absolute;
+  top: clamp(14px, 3vw, 28px);
+  right: clamp(14px, 3vw, 28px);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.lightbox__close:hover { background: var(--bg-raised); }
+
