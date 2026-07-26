@@ -15,8 +15,8 @@
   --font-body: "IBM Plex Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --measure: 640px;
-  --gutter: clamp(20px, 5vw, 64px);
+  --measure: 760px;
+  --gutter: clamp(20px, 4vw, 48px);
 }
 
 /* =========================================================
@@ -358,16 +358,6 @@ p { margin: 0 0 1.2em; }
   border-left: none;
   border-right: none;
   border-radius: 0;
-}
-
-/* Banner-style figures: show full image, no forced aspect-ratio crop */
-.case-study__figure--banner .work-item__media {
-  aspect-ratio: auto;
-}
-
-.case-study__figure--banner .work-item__media img {
-  height: auto;
-  object-fit: unset;
 }
 
 .case-study__figure figcaption {
