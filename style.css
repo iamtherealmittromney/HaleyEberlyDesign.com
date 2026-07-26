@@ -276,7 +276,7 @@ p { margin: 0 0 1.2em; }
 /* In short card */
 .brief-card {
   margin: 40px auto 0;
-  max-width: 560px;
+  max-width: 720px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--bg-raised);
