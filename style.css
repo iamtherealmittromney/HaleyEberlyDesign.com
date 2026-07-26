@@ -360,6 +360,16 @@ p { margin: 0 0 1.2em; }
   border-radius: 0;
 }
 
+/* Banner-style figures: show full image, no forced aspect-ratio crop */
+.case-study__figure--banner .work-item__media {
+  aspect-ratio: auto;
+}
+
+.case-study__figure--banner .work-item__media img {
+  height: auto;
+  object-fit: unset;
+}
+
 .case-study__figure figcaption {
   margin-top: 10px;
   padding: 0 var(--gutter);
