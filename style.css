@@ -17,7 +17,7 @@
 
   --measure: clamp(760px, 58vw, 1040px);
   --gutter: clamp(20px, 4vw, 48px);
-
+  --prose-width: clamp(560px, 45vw, 720px);
 }
 
 /* =========================================================
@@ -276,7 +276,7 @@ p { margin: 0 0 1.2em; }
 /* In short card */
 .brief-card {
   margin: 40px auto 0;
-  max-width: 720px;
+  max-width: var(--prose-width);
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--bg-raised);
@@ -334,6 +334,7 @@ p { margin: 0 0 1.2em; }
 .case-study__body p {
   font-size: 1.05rem;
   color: var(--ink);
+  max-width: var(--prose-width);
 }
 
 .case-study__body h2 {
