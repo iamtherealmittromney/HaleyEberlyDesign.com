@@ -139,6 +139,7 @@ p { margin: 0 0 1.2em; }
   max-width: 46ch;
   color: var(--ink-soft);
   font-size: 1.05rem;
+  text-align: center;
 }
 
 /* =========================================================
