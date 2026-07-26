@@ -1,0 +1,388 @@
+/* =========================================================
+   Design tokens
+   ========================================================= */
+:root {
+  --bg: #f3f3f0;
+  --bg-raised: #eaeae5;
+  --ink: #14140f;
+  --ink-soft: #55564f;
+  --ink-faint: #8b8c83;
+  --line: #d8d8d1;
+  --accent: #23453d;
+  --accent-tint: #e7ece9;
+
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --measure: 640px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+/* =========================================================
+   Reset / base
+   ========================================================= */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1.2em; }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =========================================================
+   Nav
+   ========================================================= */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px var(--gutter);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav__name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-nav__links {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-nav__links a {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.site-nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.site-nav__links a:hover::after,
+.site-nav__links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* =========================================================
+   Home / hero
+   ========================================================= */
+.hero {
+  padding: clamp(48px, 10vw, 96px) var(--gutter) clamp(32px, 6vw, 56px);
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.hero p {
+  margin-top: 18px;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+/* =========================================================
+   Work list (alternating covers)
+   ========================================================= */
+.work-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  padding: clamp(32px, 6vw, 64px) var(--gutter);
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-item:last-child { border-bottom: 1px solid var(--line); }
+
+.work-item:nth-child(even) .work-item__media { order: 2; }
+.work-item:nth-child(even) .work-item__body { order: 1; }
+
+.work-item__media {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-raised);
+  border: 1px dashed var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.work-item__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.work-item__placeholder {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 12px;
+}
+
+.work-item:hover .work-item__media { transform: scale(1.015); }
+
+.work-item__index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.work-item__title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+}
+
+.work-item__tags {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-radius: 3px;
+  padding: 4px 9px;
+}
+
+@media (max-width: 720px) {
+  .work-item { grid-template-columns: 1fr; }
+  .work-item:nth-child(even) .work-item__media,
+  .work-item:nth-child(even) .work-item__body { order: initial; }
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer {
+  padding: 40px var(--gutter) 64px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--line);
+}
+
+/* =========================================================
+   Case study page
+   ========================================================= */
+.case-study {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) var(--gutter) clamp(64px, 10vw, 120px);
+  text-align: center;
+}
+
+.case-study__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.case-study__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.case-study__tags {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* In short card */
+.brief-card {
+  margin: 40px auto 0;
+  max-width: 560px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-raised);
+  text-align: left;
+  overflow: hidden;
+}
+
+.brief-card__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 14px 20px 0;
+}
+
+.brief-card dl {
+  margin: 0;
+  padding: 10px 20px 20px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  row-gap: 14px;
+  column-gap: 16px;
+}
+
+.brief-card dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-top: 2px;
+}
+
+.brief-card dd {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+@media (max-width: 560px) {
+  .brief-card dl {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+  .brief-card dt { margin-top: 10px; }
+}
+
+/* Body content */
+.case-study__body {
+  margin-top: 56px;
+  text-align: left;
+}
+
+.case-study__body p {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.case-study__body h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2.2em 0 0.7em;
+}
+
+.case-study__body ul {
+  margin: 0 0 1.2em;
+  padding-left: 1.3em;
+}
+
+.case-study__body li {
+  margin-bottom: 0.6em;
+  font-size: 1.05rem;
+}
+
+.case-study__body strong {
+  font-weight: 600;
+}
+
+.case-study__figure {
+  margin: 2.4em calc(var(--gutter) * -1);
+}
+
+.case-study__figure .work-item__media {
+  aspect-ratio: 16 / 10;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+.case-study__figure figcaption {
+  margin-top: 10px;
+  padding: 0 var(--gutter);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.case-study__nav {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+}
+
+.case-study__nav a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.case-study__nav a:hover { text-decoration: underline; }
